@@ -12,3 +12,4 @@ import * as projects from "./projects"
 })();
 
 userInterface.createUserInterface()
+userInterface.createInboxInterface()

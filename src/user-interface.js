@@ -44,3 +44,19 @@ function createProjectsDropdown(parent) {
     })
 
 }
+
+export function createInboxInterface() {
+    const mainContent = document.querySelector(".maincontent")
+
+    const inboxLogo = document.createElement("div")
+    inboxLogo.classList.add("inboxlogo")
+    inboxLogo.textContent = "Inbox"
+    mainContent.appendChild(inboxLogo)
+
+    const newTask = document.createElement("div")
+    newTask.classList.add("task")
+    newTask.innerHTML = '<i data-feather="plus-circle"></i>Add new task'
+    mainContent.appendChild(newTask)
+
+    feather.replace()
+}
