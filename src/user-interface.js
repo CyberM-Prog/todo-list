@@ -54,9 +54,107 @@ export function createInboxInterface() {
     mainContent.appendChild(inboxLogo)
 
     const newTask = document.createElement("div")
-    newTask.classList.add("task")
+    newTask.classList.add("task", "newtask")
     newTask.innerHTML = '<i data-feather="plus-circle"></i>Add new task'
     mainContent.appendChild(newTask)
 
     feather.replace()
+}
+
+export function showNewTaskPopup() {
+    const popup = document.createElement("form")
+    popup.classList.add("popup")
+    content.appendChild(popup)
+
+    const titleLabel = document.createElement("label")
+    titleLabel.textContent = "Title"
+    popup.appendChild(titleLabel)
+
+    const title = document.createElement("input")
+    title.classList.add("input")
+    titleLabel.appendChild(title)
+
+    const descriptionLabel = document.createElement("label")
+    descriptionLabel.textContent = "Description"
+    popup.appendChild(descriptionLabel)
+
+    const description = document.createElement("textarea")
+    description.classList.add("input")
+    descriptionLabel.appendChild(description)
+
+    const dueDateLabel = document.createElement("label")
+    dueDateLabel.textContent = "Deadline"
+    popup.appendChild(dueDateLabel)
+
+    const dueDate = document.createElement("input")
+    dueDate.classList.add("input")
+    dueDate.setAttribute("type", "date")
+    dueDateLabel.appendChild(dueDate)
+
+    const priorityLabel = document.createElement("label")
+    priorityLabel.classList.add("prioritylabel")
+    priorityLabel.textContent = "Priority"
+    popup.appendChild(priorityLabel)
+
+    const inputDiv3 = document.createElement("div")
+
+    const priorityMax = document.createElement("input")
+    priorityMax.classList.add("input")
+    priorityMax.setAttribute("type", "radio")
+    priorityMax.setAttribute("name", "priority")
+    priorityMax.setAttribute("id", "prioritymax")
+    inputDiv3.appendChild(priorityMax)
+
+    const priorityMaximumLabel = document.createElement("label")
+    priorityMaximumLabel.textContent = "Maximum"
+    priorityMaximumLabel.setAttribute("for", "prioritymaximum")
+    inputDiv3.appendChild(priorityMaximumLabel)
+
+    priorityLabel.appendChild(inputDiv3)
+
+    const inputDiv2 = document.createElement("div")
+
+    const priorityMedium = document.createElement("input")
+    priorityMedium.classList.add("input")
+    priorityMedium.setAttribute("type", "radio")
+    priorityMedium.setAttribute("name", "priority")
+    priorityMedium.setAttribute("id", "prioritymedium")
+    inputDiv2.appendChild(priorityMedium)
+
+    const priorityMediumLabel = document.createElement("label")
+    priorityMediumLabel.textContent = "Medium"
+    priorityMediumLabel.setAttribute("for", "prioritymedium")
+    inputDiv2.appendChild(priorityMediumLabel)
+
+    priorityLabel.appendChild(inputDiv2)
+
+    const inputDiv1 = document.createElement("div")
+
+    const priorityMin = document.createElement("input")
+    priorityMin.classList.add("input")
+    priorityMin.setAttribute("type", "radio")
+    priorityMin.setAttribute("name", "priority")
+    priorityMin.setAttribute("id", "prioritymin")
+    inputDiv1.appendChild(priorityMin)
+
+    const priorityMinLabel = document.createElement("label")
+    priorityMinLabel.textContent = "Minimum"
+    priorityMinLabel.setAttribute("for", "prioritymin")
+    inputDiv1.appendChild(priorityMinLabel)
+
+    priorityLabel.appendChild(inputDiv1)
+
+    const notesLabel = document.createElement("label")
+    notesLabel.textContent = "Notes"
+    popup.appendChild(notesLabel)
+
+    const notes = document.createElement("textarea")
+    notes.classList.add("input")
+    notesLabel.appendChild(notes)
+
+    const submit = document.createElement("button")
+    submit.classList.add("submit")
+    submit.textContent = "Add task"
+    submit.setAttribute("type", "button")
+    popup.appendChild(submit)
 }
