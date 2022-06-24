@@ -16,7 +16,6 @@ userInterface.createInboxInterface()
 
 const inbox = projects.projectFactory("Inbox")
 let currentProject = inbox
-console.log(currentProject) // a seguir tratar da logica que mete os novos elementos na inbox
 
 const newTaskButton = document.querySelector(".newtask") 
 
@@ -42,8 +41,6 @@ newTaskButton.addEventListener("click", () => {
         const newTask = todos.todoFactory(title.value, description.value, dueDate.value, priority, notes.value)
         currentProject.todos.push(newTask)
         userInterface.closeNewTaskPopup()
-
-        console.log(currentProject.todos[currentProject.todos.length - 1].title)
 
         let currentTodo = currentProject.todos[currentProject.todos.length - 1]
 

@@ -5,7 +5,8 @@ export function createUserInterface() {
     sidebar.classList.add("sidebar")
     content.appendChild(sidebar)
 
-    const inbox = document.createElement("div")
+    const inbox = document.createElement("button")
+    inbox.classList.add("sidebarbutton")
     inbox.innerHTML = '<i data-feather="inbox"></i>Inbox'
     sidebar.appendChild(inbox)
 
@@ -20,18 +21,21 @@ export function createUserInterface() {
 }
 
 function createProjectsDropdown(parent) {
-    const projects = document.createElement("div")
+    const projects = document.createElement("button")
     projects.innerHTML = '<i data-feather="chevron-right"></i><div>Projects</div>'
-    projects.classList.add("projects")
+    projects.classList.add("projects", "sidebarbutton")
     parent.appendChild(projects)
 
-    projects.addEventListener("click", function() {
+    projects.addEventListener("click", toggleDropdown)
+
+    function toggleDropdown() {
         if (projects.innerHTML === '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg><div>Projects</div>') {
             projects.innerHTML = '<i data-feather="chevron-down"></i><div>Projects</div>'
             feather.replace()
 
             
-            const newProject = document.createElement("p")
+            const newProject = document.createElement("button")
+            newProject.classList.add("sidebarbutton", "newprojectbutton")
             newProject.textContent = "Create Project"
             projects.appendChild(newProject)
         }
@@ -41,7 +45,7 @@ function createProjectsDropdown(parent) {
 
             
         }
-    })
+    }
 
 }
 

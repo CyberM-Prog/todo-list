@@ -23,18 +23,25 @@
     gap: 1rem;
 }
 
-.sidebar > div {
+.sidebar > button {
     display: grid;
     align-items: center;
     grid-template-columns: min-content max-content;
     grid-template-rows: max-content max-content;
     gap: 0.5rem;
-    
+    justify-items: start;
 }
 
-.projects > p {
+.newprojectbutton {
     margin-top: 0.5rem;
     grid-column: 2 / -1;
+}
+
+.sidebarbutton {
+    background-color: #0077B6;
+    border-width: 0;
+    font-size: 2rem;
+    color: white;
 }
 
 .maincontent {
