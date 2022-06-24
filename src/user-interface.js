@@ -71,7 +71,7 @@ export function showNewTaskPopup() {
     popup.appendChild(titleLabel)
 
     const title = document.createElement("input")
-    title.classList.add("input")
+    title.classList.add("title")
     titleLabel.appendChild(title)
 
     const descriptionLabel = document.createElement("label")
@@ -79,7 +79,7 @@ export function showNewTaskPopup() {
     popup.appendChild(descriptionLabel)
 
     const description = document.createElement("textarea")
-    description.classList.add("input")
+    description.classList.add("description")
     descriptionLabel.appendChild(description)
 
     const dueDateLabel = document.createElement("label")
@@ -87,7 +87,7 @@ export function showNewTaskPopup() {
     popup.appendChild(dueDateLabel)
 
     const dueDate = document.createElement("input")
-    dueDate.classList.add("input")
+    dueDate.classList.add("duedate")
     dueDate.setAttribute("type", "date")
     dueDateLabel.appendChild(dueDate)
 
@@ -99,7 +99,7 @@ export function showNewTaskPopup() {
     const inputDiv3 = document.createElement("div")
 
     const priorityMax = document.createElement("input")
-    priorityMax.classList.add("input")
+    priorityMax.classList.add("radio1")
     priorityMax.setAttribute("type", "radio")
     priorityMax.setAttribute("name", "priority")
     priorityMax.setAttribute("id", "prioritymax")
@@ -115,7 +115,7 @@ export function showNewTaskPopup() {
     const inputDiv2 = document.createElement("div")
 
     const priorityMedium = document.createElement("input")
-    priorityMedium.classList.add("input")
+    priorityMedium.classList.add("radio2")
     priorityMedium.setAttribute("type", "radio")
     priorityMedium.setAttribute("name", "priority")
     priorityMedium.setAttribute("id", "prioritymedium")
@@ -131,7 +131,7 @@ export function showNewTaskPopup() {
     const inputDiv1 = document.createElement("div")
 
     const priorityMin = document.createElement("input")
-    priorityMin.classList.add("input")
+    priorityMin.classList.add("radio3")
     priorityMin.setAttribute("type", "radio")
     priorityMin.setAttribute("name", "priority")
     priorityMin.setAttribute("id", "prioritymin")
@@ -149,7 +149,7 @@ export function showNewTaskPopup() {
     popup.appendChild(notesLabel)
 
     const notes = document.createElement("textarea")
-    notes.classList.add("input")
+    notes.classList.add("notes")
     notesLabel.appendChild(notes)
 
     const submit = document.createElement("button")
@@ -157,4 +157,33 @@ export function showNewTaskPopup() {
     submit.textContent = "Add task"
     submit.setAttribute("type", "button")
     popup.appendChild(submit)
+}
+
+export function closeNewTaskPopup() {
+    const form = document.querySelector("form")
+    form.parentElement.removeChild(form)
+}
+
+export function showTask(title, dueDate, priority) {
+    const mainContent = document.querySelector(".maincontent")
+    const inboxLogo = document.querySelector(".inboxlogo")
+
+    const todoDiv = document.createElement("div")
+    todoDiv.classList.add("todo")
+    mainContent.insertBefore(todoDiv, inboxLogo.nextSibling)
+
+    const titleDiv = document.createElement("div")
+    titleDiv.textContent = title
+    todoDiv.appendChild(titleDiv)
+
+    const dueDateDiv = document.createElement("div")
+    dueDateDiv.textContent = "Deadline: " + dueDate
+    todoDiv.appendChild(dueDateDiv)
+
+    const deleteButton = document.createElement("button")
+    deleteButton.classList.add("deletebutton")
+    deleteButton.innerHTML = '<i data-feather="trash-2"></i>'
+    todoDiv.appendChild(deleteButton)
+
+    feather.replace()
 }
