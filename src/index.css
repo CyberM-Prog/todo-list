@@ -27,7 +27,7 @@
     display: grid;
     align-items: center;
     grid-template-columns: min-content max-content;
-    grid-template-rows: max-content max-content;
+    grid-template-rows: max-content;
     gap: 0.5rem;
     justify-items: start;
 }
