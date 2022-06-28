@@ -57,13 +57,13 @@ function createProjectsDropdown(parent) {
 
 }
 
-export function createInboxInterface() {
+export function createProjectInterface(title) {
     const mainContent = document.querySelector(".maincontent")
 
-    const inboxLogo = document.createElement("div")
-    inboxLogo.classList.add("inboxlogo")
-    inboxLogo.textContent = "Inbox"
-    mainContent.appendChild(inboxLogo)
+    const projectLogo = document.createElement("div")
+    projectLogo.classList.add("projectlogo")
+    projectLogo.textContent = title
+    mainContent.appendChild(projectLogo)
 
     const newTask = document.createElement("div")
     newTask.classList.add("task", "newtask")

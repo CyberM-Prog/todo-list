@@ -12,7 +12,7 @@ import * as projects from "./projects"
 })();
 
 userInterface.createUserInterface()
-userInterface.createInboxInterface()
+userInterface.createProjectInterface("Inbox")
 
 const inbox = projects.projectFactory("Inbox")
 let currentProject = inbox
