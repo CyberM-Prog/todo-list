@@ -25,36 +25,24 @@ function createProjectsDropdown(parent) {
     projects.innerHTML = '<i data-feather="chevron-right" class="projectsbutton"></i><div class="projectsbutton">Projects</div>'
     projects.classList.add("projects", "sidebarbutton")
     parent.appendChild(projects)
+}
 
-    function addNLEventListener() {
-        let projectsButtonElements = document.querySelectorAll(".projectsbutton")
-        projectsButtonElements.forEach(
-            element => element.addEventListener("click", toggleDropdown)
-        )
-    }
-    addNLEventListener()
-
-    function toggleDropdown() {
-        if (projects.innerHTML === '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right projectsbutton"><polyline points="9 18 15 12 9 6"></polyline></svg><div class="projectsbutton">Projects</div>') {
-            projects.innerHTML = '<i data-feather="chevron-down" class="projectsbutton"></i><div class="projectsbutton">Projects</div>'
-            feather.replace()
+export function openDropdown() {
+    const projects = document.querySelector(".projects")
+    projects.innerHTML = '<i data-feather="chevron-down" class="projectsbutton"></i><div class="projectsbutton">Projects</div>'
+    feather.replace()
 
             
-            const newProject = document.createElement("button")
-            newProject.classList.add("sidebarbutton", "newprojectbutton")
-            newProject.textContent = "Create Project"
-            projects.appendChild(newProject)
+    const newProject = document.createElement("button")
+    newProject.classList.add("sidebarbutton", "newprojectbutton")
+    newProject.textContent = "Create Project"
+    projects.appendChild(newProject)
+}
 
-            addNLEventListener()
-        }
-        else {
-            projects.innerHTML = '<i data-feather="chevron-right" class="projectsbutton"></i><div class="projectsbutton">Projects</div>'
-            feather.replace()
-
-            addNLEventListener()           
-        }
-    }
-
+export function closeDropdown() {
+    const projects = document.querySelector(".projects")
+    projects.innerHTML = '<i data-feather="chevron-right" class="projectsbutton"></i><div class="projectsbutton">Projects</div>'
+    feather.replace()
 }
 
 export function createProjectInterface(title) {
