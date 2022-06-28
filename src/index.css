@@ -37,6 +37,11 @@
     grid-column: 2 / -1;
 }
 
+.projectslist {
+    margin-top: 0.5rem;
+    grid-column: 2 / -1;
+}
+
 .sidebarbutton {
     background-color: #0077B6;
     border-width: 0;

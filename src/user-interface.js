@@ -220,3 +220,13 @@ export function showNewProjectPopup() {
     submit.setAttribute("type", "button")
     projectPopup.appendChild(submit)
 }
+
+export function showProject(title) {
+    const newProjectButton = document.querySelector(".newprojectbutton")
+    const projects = document.querySelector(".projects")
+
+    const project = document.createElement("button")
+    project.classList.add("sidebarbutton", "projectslist")
+    project.textContent = title
+    projects.insertBefore(project, newProjectButton)
+}
