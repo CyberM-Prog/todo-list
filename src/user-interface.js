@@ -67,7 +67,7 @@ export function createInboxInterface() {
 
     const newTask = document.createElement("div")
     newTask.classList.add("task", "newtask")
-    newTask.innerHTML = '<i data-feather="plus-circle"></i>Add new task'
+    newTask.innerHTML = '<i data-feather="plus-circle"></i><button class="newtaskbutton">Add new task</button>'
     mainContent.appendChild(newTask)
 
     feather.replace()
