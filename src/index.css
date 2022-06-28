@@ -87,6 +87,24 @@
     font-size: 1.25rem;
 }
 
+.projectpopup {
+    background-color: #90E0EF;
+    height: 20vh;
+    width: 30vw;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 1rem;
+    border: 5px solid #023E8A;
+    padding: 1rem;
+    font-size: 1.25rem;
+    display: grid;
+    align-items: center;
+}
+
 label {
     display: grid;
 }

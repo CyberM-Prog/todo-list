@@ -199,3 +199,22 @@ export function showTask(title, dueDate, priority) {
 
     feather.replace()
 }
+
+export function showNewProjectPopup() {
+    const projectPopup = document.createElement("form")
+    projectPopup.classList.add("projectpopup")
+    content.appendChild(projectPopup)
+
+    const titleLabel = document.createElement("label")
+    titleLabel.textContent = "Title"
+    projectPopup.appendChild(titleLabel)
+
+    const titleInput = document.createElement("input")
+    titleLabel.appendChild(titleInput)
+
+    const submit = document.createElement("button")
+    submit.classList.add("submit")
+    submit.textContent = "Add project"
+    submit.setAttribute("type", "button")
+    projectPopup.appendChild(submit)
+}
