@@ -74,8 +74,8 @@ export function createProjectInterface(title) {
 }
 
 export function showNewTaskPopup() {
-    const popup = document.createElement("form")
-    popup.classList.add("popup")
+    const popup = document.createElement("div")
+    popup.classList.add("popup", "form")
     content.appendChild(popup)
 
     const titleLabel = document.createElement("label")
@@ -171,18 +171,18 @@ export function showNewTaskPopup() {
     popup.appendChild(submit)
 }
 
-export function closeNewTaskPopup() {
-    const form = document.querySelector("form")
+export function closePopup() {
+    const form = document.querySelector(".form")
     form.parentElement.removeChild(form)
 }
 
 export function showTask(title, dueDate, priority) {
     const mainContent = document.querySelector(".maincontent")
-    const inboxLogo = document.querySelector(".inboxlogo")
+    const projectLogo = document.querySelector(".projectlogo")
 
     const todoDiv = document.createElement("div")
     todoDiv.classList.add("todo")
-    mainContent.insertBefore(todoDiv, inboxLogo.nextSibling)
+    mainContent.insertBefore(todoDiv, projectLogo.nextSibling)
 
     const titleDiv = document.createElement("div")
     titleDiv.textContent = title
@@ -201,8 +201,8 @@ export function showTask(title, dueDate, priority) {
 }
 
 export function showNewProjectPopup() {
-    const projectPopup = document.createElement("form")
-    projectPopup.classList.add("projectpopup")
+    const projectPopup = document.createElement("div")
+    projectPopup.classList.add("projectpopup", "form")
     content.appendChild(projectPopup)
 
     const titleLabel = document.createElement("label")
@@ -210,10 +210,12 @@ export function showNewProjectPopup() {
     projectPopup.appendChild(titleLabel)
 
     const titleInput = document.createElement("input")
+    titleInput.setAttribute("id", "projecttitle")
+    titleInput.setAttribute("type", "text")
     titleLabel.appendChild(titleInput)
 
     const submit = document.createElement("button")
-    submit.classList.add("submit")
+    submit.classList.add("submit", "addprojectbutton")
     submit.textContent = "Add project"
     submit.setAttribute("type", "button")
     projectPopup.appendChild(submit)
