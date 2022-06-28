@@ -40,10 +40,34 @@ newTaskButton.addEventListener("click", () => {
 
         const newTask = todos.todoFactory(title.value, description.value, dueDate.value, priority, notes.value)
         currentProject.todos.push(newTask)
-        userInterface.closeNewTaskPopup()
+        userInterface.closePopup()
 
         let currentTodo = currentProject.todos[currentProject.todos.length - 1]
 
         userInterface.showTask(currentTodo.title, currentTodo.dueDate, currentTodo.priority)
     })
-})
+});
+
+(function createProject() {
+    const projectsButton = document.querySelector(".projects")
+    projectsButton.addEventListener("click", function() {
+        
+        const newProjectButton = document.querySelector(".newprojectbutton")
+        console.log(newProjectButton)
+        newProjectButton.addEventListener("click", showProjectPopup)
+    })
+
+    function showProjectPopup() {
+        userInterface.showNewProjectPopup()
+
+        const addProjectButton = document.querySelector(".addprojectbutton")
+        addProjectButton.addEventListener("click", addProject)
+    }
+
+    function addProject() {
+        const newProject = projects.projectFactory(projecttitle.value)
+
+        userInterface.showProject(newProject.title)
+        userInterface.closePopup()
+    }
+})()
