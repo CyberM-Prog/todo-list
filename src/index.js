@@ -56,7 +56,9 @@ newTaskButton.addEventListener("click", () => {
     projectsButton.addEventListener("click", function() {
         
         const newProjectButton = document.querySelector(".newprojectbutton")
+        if (newProjectButton) {
         newProjectButton.addEventListener("click", showProjectPopup)
+        }
     })
 
     function showProjectPopup() {
