@@ -11,10 +11,13 @@ import * as projects from "./projects"
     body.appendChild(content)
 })();
 
+const projectsArray = []
+
 userInterface.createUserInterface()
 userInterface.createProjectInterface("Inbox")
 
 const inbox = projects.projectFactory("Inbox")
+projectsArray.push(inbox)
 let currentProject = inbox
 
 const newTaskButton = document.querySelector(".newtask") 
@@ -53,7 +56,6 @@ newTaskButton.addEventListener("click", () => {
     projectsButton.addEventListener("click", function() {
         
         const newProjectButton = document.querySelector(".newprojectbutton")
-        console.log(newProjectButton)
         newProjectButton.addEventListener("click", showProjectPopup)
     })
 
@@ -66,6 +68,8 @@ newTaskButton.addEventListener("click", () => {
 
     function addProject() {
         const newProject = projects.projectFactory(projecttitle.value)
+
+        projectsArray.push(newProject)
 
         userInterface.showProject(newProject.title)
         userInterface.closePopup()
