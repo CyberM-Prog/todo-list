@@ -50,6 +50,7 @@ function createNewTask() {
 
             userInterface.showTask(currentTodo.title, currentTodo.dueDate, currentTodo.priority)
             viewTodos()
+            deleteTodo()
         })
     });
 };
@@ -127,6 +128,7 @@ function seeEachProject() {
             loadProject()
             
             viewTodos()
+            deleteTodo()
         }
     }
 }
@@ -189,7 +191,28 @@ function editTodo() {
                 loadProject()
 
                 viewTodos()
+                deleteTodo()
             })
         }
     }
+}
+
+function deleteTodo() {
+    const deleteButtons = document.querySelectorAll(".deletebutton")
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function(e) {
+            e.stopPropagation()
+
+            const title = button.previousSibling.previousSibling.textContent
+
+            for (let i = 0; i < currentProject.todos.length; i++) {
+                if (currentProject.todos[i].title === title) {
+                    currentProject.todos.splice(i, 1)
+                    loadProject()
+                }
+            }
+        
+                    
+        })
+    })
 }

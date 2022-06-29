@@ -120,7 +120,7 @@ label {
     gap: 0.25rem;
 }
 
-.submit {
+.submit, .edit {
     background-color: #023E8A;
     color: white;
     font-size: 1.5rem;
