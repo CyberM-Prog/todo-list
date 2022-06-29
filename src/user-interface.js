@@ -110,11 +110,12 @@ export function showNewTaskPopup() {
     priorityMax.setAttribute("type", "radio")
     priorityMax.setAttribute("name", "priority")
     priorityMax.setAttribute("id", "prioritymax")
+    priorityMax.setAttribute("checked", "true")
     inputDiv3.appendChild(priorityMax)
 
     const priorityMaximumLabel = document.createElement("label")
     priorityMaximumLabel.textContent = "Maximum"
-    priorityMaximumLabel.setAttribute("for", "prioritymaximum")
+    priorityMaximumLabel.setAttribute("for", "prioritymax")
     inputDiv3.appendChild(priorityMaximumLabel)
 
     priorityLabel.appendChild(inputDiv3)
@@ -177,6 +178,11 @@ export function showTask(title, dueDate, priority) {
 
     const todoDiv = document.createElement("div")
     todoDiv.classList.add("todo")
+
+    if (priority === "Maximum") todoDiv.classList.add("max")
+    if (priority === "Medium") todoDiv.classList.add("medium")
+    if (priority === "Minimum") todoDiv.classList.add("min")
+
     mainContent.insertBefore(todoDiv, projectLogo.nextSibling)
 
     const titleDiv = document.createElement("div")
