@@ -92,6 +92,11 @@ function toggleDropdown() {
     const projects = document.querySelector(".projects")
     if (projects.innerHTML === '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right projectsbutton"><polyline points="9 18 15 12 9 6"></polyline></svg><div class="projectsbutton">Projects</div>') {
         userInterface.openDropdown()
+
+        for (let i = 1; i < projectsArray.length; i++) {
+            userInterface.showProject(projectsArray[i].title)
+        }
+
         addELToDropdownButtons()
     }
     else {
