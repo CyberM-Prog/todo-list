@@ -20,36 +20,39 @@ const inbox = projects.projectFactory("Inbox")
 projectsArray.push(inbox)
 let currentProject = inbox
 
-const newTaskButton = document.querySelector(".newtask") 
+function createNewTask() {
+    const newTaskButton = document.querySelector(".newtask") 
 
-newTaskButton.addEventListener("click", () => {
-    userInterface.showNewTaskPopup()
+    newTaskButton.addEventListener("click", () => {
+        userInterface.showNewTaskPopup()
 
-    const addTaskButton = document.querySelector(".submit")
-    addTaskButton.addEventListener("click", function() {
-        const title = document.querySelector(".title")
-        const description = document.querySelector(".description")
-        const dueDate = document.querySelector(".duedate")
-        const priorityMax = document.querySelector(".radio1")
-        const priorityMedium = document.querySelector(".radio2")
-        const priorityMin = document.querySelector(".radio3")
-        const notes = document.querySelector(".notes")
+        const addTaskButton = document.querySelector(".submit")
+        addTaskButton.addEventListener("click", function() {
+            const title = document.querySelector(".title")
+            const description = document.querySelector(".description")
+            const dueDate = document.querySelector(".duedate")
+            const priorityMax = document.querySelector(".radio1")
+            const priorityMedium = document.querySelector(".radio2")
+            const priorityMin = document.querySelector(".radio3")
+            const notes = document.querySelector(".notes")
 
-        let priority
+            let priority
 
-        if (priorityMax.checked) priority = "Maximum"
-        if (priorityMedium.checked) priority = "Medium"
-        if (priorityMin.checked) priority = "Minimum"
+            if (priorityMax.checked) priority = "Maximum"
+            if (priorityMedium.checked) priority = "Medium"
+            if (priorityMin.checked) priority = "Minimum"
 
-        const newTask = todos.todoFactory(title.value, description.value, dueDate.value, priority, notes.value)
-        currentProject.todos.push(newTask)
-        userInterface.closePopup()
+            const newTask = todos.todoFactory(title.value, description.value, dueDate.value, priority, notes.value)
+            currentProject.todos.push(newTask)
+            userInterface.closePopup()
 
-        let currentTodo = currentProject.todos[currentProject.todos.length - 1]
+            let currentTodo = currentProject.todos[currentProject.todos.length - 1]
 
-        userInterface.showTask(currentTodo.title, currentTodo.dueDate, currentTodo.priority)
-    })
-});
+            userInterface.showTask(currentTodo.title, currentTodo.dueDate, currentTodo.priority)
+        })
+    });
+};
+createNewTask();
 
 (function createProject() {
     const projectsButton = document.querySelector(".projects")
@@ -106,9 +109,6 @@ function toggleDropdown() {
     }
 
     addELToAllProjects()
-
-    const newProjectButton = document.querySelector(".newprojectbutton")
-
 }
 
 function addELToAllProjects() {
@@ -119,12 +119,19 @@ function addELToAllProjects() {
 }
 
 function seeEachProject() {
-    for (let i = 1; i < projectsArray.length; i++) {
+    for (let i = 0; i < projectsArray.length; i++) {
         if (this.textContent === projectsArray[i].title) {
             currentProject = projectsArray[i]
-            console.log(currentProject)
+
+            userInterface.deleteProjectInterface()
+            userInterface.createProjectInterface(currentProject.title)
+            createNewTask()
+
+            const todos = currentProject.todos
+
+            for (let i = 0; i < todos.length; i++) {
+                userInterface.showTask(todos[i].title, todos[i].dueDate, todos[i].priority)
+            }            
         }
     }
-    userInterface.deleteProjectInterface()
-    userInterface.createProjectInterface(currentProject.title)
 }

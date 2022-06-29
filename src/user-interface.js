@@ -6,7 +6,7 @@ export function createUserInterface() {
     content.appendChild(sidebar)
 
     const inbox = document.createElement("button")
-    inbox.classList.add("sidebarbutton")
+    inbox.classList.add("sidebarbutton", "projectslist")
     inbox.innerHTML = '<i data-feather="inbox"></i>Inbox'
     sidebar.appendChild(inbox)
 
