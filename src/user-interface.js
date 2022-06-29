@@ -61,6 +61,13 @@ export function createProjectInterface(title) {
     feather.replace()
 }
 
+export function deleteProjectInterface() {
+    const mainContent = document.querySelector(".maincontent")
+    while (mainContent.firstChild) {
+        mainContent.removeChild(mainContent.firstChild)
+    }
+}
+
 export function showNewTaskPopup() {
     const popup = document.createElement("div")
     popup.classList.add("popup", "form")
