@@ -49,6 +49,7 @@ function createNewTask() {
             let currentTodo = currentProject.todos[currentProject.todos.length - 1]
 
             userInterface.showTask(currentTodo.title, currentTodo.dueDate, currentTodo.priority)
+            viewTodos()
         })
     });
 };
@@ -123,15 +124,72 @@ function seeEachProject() {
         if (this.textContent === projectsArray[i].title) {
             currentProject = projectsArray[i]
 
-            userInterface.deleteProjectInterface()
-            userInterface.createProjectInterface(currentProject.title)
-            createNewTask()
+            loadProject()
+            
+            viewTodos()
+        }
+    }
+}
 
-            const todos = currentProject.todos
+function viewTodos() {
+    const todos = document.querySelectorAll(".todo")
+    todos.forEach(todo => {
+        todo.addEventListener("click", editTodo)
+    })
+}
 
-            for (let i = 0; i < todos.length; i++) {
-                userInterface.showTask(todos[i].title, todos[i].dueDate, todos[i].priority)
-            }            
+function loadProject() {
+    userInterface.deleteProjectInterface()
+    userInterface.createProjectInterface(currentProject.title)
+    createNewTask()
+
+    const todos = currentProject.todos
+
+    for (let i = 0; i < todos.length; i++) {
+        userInterface.showTask(todos[i].title, todos[i].dueDate, todos[i].priority)
+    }
+}
+
+function editTodo() {
+
+    for (let i = 0; i < currentProject.todos.length; i++) {
+        if (currentProject.todos[i].title === this.firstChild.textContent) {
+
+            const task = currentProject.todos[i]
+
+            userInterface.showEditTaskPopup(
+                task.title, task.description, task.dueDate, task.priority, task.notes
+            )
+
+            const editButton = document.querySelector(".edit")
+            editButton.addEventListener("click", function() {
+
+                const title = document.querySelector(".title")
+                const description = document.querySelector(".description")
+                const dueDate = document.querySelector(".duedate")
+                const priorityMax = document.querySelector(".radio1")
+                const priorityMedium = document.querySelector(".radio2")
+                const priorityMin = document.querySelector(".radio3")
+                const notes = document.querySelector(".notes")
+
+                let priority
+
+                if (priorityMax.checked) priority = "Maximum"
+                if (priorityMedium.checked) priority = "Medium"
+                if (priorityMin.checked) priority = "Minimum"
+
+                task.title = title.value
+                task.description = description.value
+                task.dueDate = dueDate.value
+                task.priority = priority
+                task.notes = notes.value
+
+                userInterface.closePopup()
+                
+                loadProject()
+
+                viewTodos()
+            })
         }
     }
 }
