@@ -75,12 +75,13 @@ newTaskButton.addEventListener("click", () => {
 
         userInterface.showProject(newProject.title)
         userInterface.closePopup()
+        addELToAllProjects()
     }
 })();
 
 
 function addELToDropdownButtons() {
-    let projectsButtonElements = document.querySelectorAll(".projectsbutton")
+    const projectsButtonElements = document.querySelectorAll(".projectsbutton")
     projectsButtonElements.forEach(
         element => element.addEventListener("click", toggleDropdown)
     )
@@ -103,4 +104,27 @@ function toggleDropdown() {
         userInterface.closeDropdown()
         addELToDropdownButtons()
     }
+
+    addELToAllProjects()
+
+    const newProjectButton = document.querySelector(".newprojectbutton")
+
+}
+
+function addELToAllProjects() {
+    const projectsList = document.querySelectorAll(".projectslist")
+    projectsList.forEach(project => {
+        project.addEventListener("click", seeEachProject)
+    })
+}
+
+function seeEachProject() {
+    for (let i = 1; i < projectsArray.length; i++) {
+        if (this.textContent === projectsArray[i].title) {
+            currentProject = projectsArray[i]
+            console.log(currentProject)
+        }
+    }
+    userInterface.deleteProjectInterface()
+    userInterface.createProjectInterface(currentProject.title)
 }
