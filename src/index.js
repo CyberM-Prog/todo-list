@@ -11,14 +11,22 @@ import * as projects from "./projects"
     body.appendChild(content)
 })();
 
-const projectsArray = []
+let projectsArray
+if (!localStorage.getItem("data")) {
+    projectsArray = []
+}
+else {projectsArray = JSON.parse(localStorage.getItem("data"))}
 
 userInterface.createUserInterface()
 userInterface.createProjectInterface("Inbox")
 
-const inbox = projects.projectFactory("Inbox")
-projectsArray.push(inbox)
-let currentProject = inbox
+if (!projectsArray[0]){
+    const inbox = projects.projectFactory("Inbox")
+    projectsArray.push(inbox)
+}
+
+let currentProject = projectsArray[0]
+
 
 function createNewTask() {
     const newTaskButton = document.querySelector(".newtask") 
@@ -51,6 +59,7 @@ function createNewTask() {
             userInterface.showTask(currentTodo.title, currentTodo.dueDate, currentTodo.priority)
             viewTodos()
             deleteTodo()
+            populateStorage()
         })
     });
 };
@@ -81,6 +90,7 @@ createNewTask();
         userInterface.showProject(newProject.title)
         userInterface.closePopup()
         addELToAllProjects()
+        populateStorage()
     }
 })();
 
@@ -192,6 +202,7 @@ function editTodo() {
 
                 viewTodos()
                 deleteTodo()
+                populateStorage()
             })
         }
     }
@@ -209,10 +220,15 @@ function deleteTodo() {
                 if (currentProject.todos[i].title === title) {
                     currentProject.todos.splice(i, 1)
                     loadProject()
+                    populateStorage()
                 }
-            }
-        
-                    
+            }                  
         })
     })
 }
+
+function populateStorage() {
+    localStorage.setItem("data", JSON.stringify(projectsArray))
+}
+
+loadProject()
